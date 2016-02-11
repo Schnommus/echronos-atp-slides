@@ -64,34 +64,13 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                             <br>
                             <br>
                             <br>
-                            <h2>eChronos & lwIP</h2>
-                            <h4>Toward high assurance IoT</h4>
+                            <h2>eChronos Adventures</h2>
+                            <h4>lwIP, IoT & Radioactivity</h4>
                             <small>Seb Holzapfel - <a href="http://sebholzapfel.com">sebholzapfel.com</a></small>
                         </div>
                         <div id="right_col">
                         </div>
                     </div>
-                </section>
-
-                <section data-background="images/background2.jpg">
-                    <h3>Bio</h3>
-                    <p>
-                    <ul>
-                        <li class="fragment" data-fragment-index="1">Hobbyist - <a href="http://sebholzapfel.com">sebholzapfel.com</a></li>
-                        <li class="fragment" data-fragment-index="2">Prototyping business</li>
-                        <li class="fragment" data-fragment-index="3">Radio/Radar techie</li>
-                        <li class="fragment" data-fragment-index="4">PCB design business</li>
-                    </ul>
-                    <br>
-                    <img width="170" data-src="images/hobby.png" class="fragment" data-fragment-index="1">
-                    <img width="170" data-src="images/embedded.png" class="fragment" data-fragment-index="2">
-                    <img width="170" data-src="images/vor.png" class="fragment" data-fragment-index="3">
-                    <img width="170" data-src="images/radar.png" class="fragment" data-fragment-index="3">
-                    <img width="170" data-src="images/pcb.png" class="fragment" data-fragment-index="4">
-                        <h4 class="fragment" data-fragment-index="5">tl;dr</h4>
-                        <p class="fragment" data-fragment-index="5">Intern @ CSIRO Data61 (OS Research group, eChronos)</p>
-                        <p class="fragment" data-fragment-index="5">Entering 2nd year EE @ UNSW</p>
-                    </p>
                 </section>
 
                 <section data-background="images/background2.jpg">
@@ -105,79 +84,26 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
                             <img width="500" data-src="images/echronos-lwip-graphic_04.png" style="border:0; background:none;" class="fragment" data-fragment-index="3">
                         </div>
                     </div>
-                    <aside class="notes">
-                        Here's what I've done, just before we move into what I'm going to talk about
-                    </aside>
                 </section>
 
                 <section data-background="images/background2.jpg">
-                    <h3>Going to talk about...</h3>
-                    <ul>
-                        <li class="fragment"><b>eChronos RTOS:</b> What is it? Why is it useful? What do I mean by high-assurance?</li>
-                        <li class="fragment"><b>lwIP:</b> When do I need a TCP/IP stack?  What are they useful for? How do I port a TCP/IP stack to eChronos or my RTOS?</li>
-                        <li class="fragment"><b>Hardware demos:</b> How do I get this running on hardware? What are these systems useful for? (spoiler: anything IoT)</li>
-                    </ul>
-                    <br><br>
-                    <b class="fragment">Interspersed... porting tricks & traps</b>
-                </section>
-
-                <section data-background="images/background2.jpg">
-                    <h3>Hardware Shopping</h3>
-                    <div class="fragment">Ethernet controller, butt-loads of IO, PWM, UART, ICDI etc. ~$30 <br></div>
-                    <div class="fragment">
-                        <img width="600" data-src="images/tm4c1294_board.jpg"> <br>
-                        TI Connected Launchpad: TM4C1294X with an <b>ARM Cortex M4</b> core
-                        <small>Why? Relatively easy to use, inexpensive.</small>
-                    </div>
-
-                    <aside class="notes">
-                        Mention the open-source gcc toolchain & openOCD, both available in most linux distro package libraries.
-                    </aside>
-                </section>
-
-                <section data-background="images/background2.jpg">
-                    <h3>What is an RTOS?</h3>
-                    <div class="fragment">
-                        <b>Real Time Operating System</b><br>
-                        Low-overhead OS, makes guarantees about execution time. Often intended for embedded use. May have heard of...
-                        <br>
-                    </div>
-                    <div class="fragment">
-                        <ul>
-                            <li>FreeRTOS (very common)</li>
-                            <li>Simba OS (arduino)</li>
-                        </ul>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="fragment">
-                        <b>Useful when</b> <br>
-                        Writing firmware that could benefit from primitives like threads, mutexes, signals etc.
-                    </div>
-
-                    <aside class="notes">
-                        Question about who's used an RTOS in their projects before, and why.
-                    </aside>
-                </section>
-
-                <section data-background="images/background2.jpg">
-                    <h3>Why is eChronos interesting?</h3>
-                    <div class="fragment" data-fragment-index="1">
-                        <b>Open-source</b> <br>
-                        eChronos is under AGPLv3 - <a href="https://github.com/echronos/echronos">github.com/echronos</a><br>
-                    </div>
-                    <br>
-                    <div class="fragment" data-fragment-index="2">
-                        <b>High-assurance</b> <br>
-                        A model of the RTOS' architecture is being mathematically verified*<br>
-                    </div>
-                    <br>
-                    <div class="fragment" data-fragment-index="3">
-                        <b>Miniscule overhead</b> <br>
-                        Component-based construction means that the overhead of using this RTOS is kept at a minimum. How? 2 stages.<br>
-                    </div>
-                    <br>
-                    <small class="fragment" data-fragment-index="2">*model-checking for adherence to our specification without unintended side-effects (abstract, not code-level). 'Progress' proofs would be even nicer, perhaps a future project</small>
+                            <h3>Why is eChronos interesting?</h3>
+                            <div class="fragment" data-fragment-index="1">
+                                <b>Open-source</b> <br>
+                                eChronos is under AGPLv3 - <a href="https://github.com/echronos/echronos">github.com/echronos</a><br>
+                            </div>
+                            <br>
+                            <div class="fragment" data-fragment-index="2">
+                                <b>High-assurance</b> <br>
+                                A model of the RTOS' architecture is being mathematically verified*<br>
+                            </div>
+                            <br>
+                            <div class="fragment" data-fragment-index="3">
+                                <b>Miniscule overhead</b> <br>
+                                Component-based construction means that the overhead of using this RTOS is kept at a minimum. How? 2 stages.<br>
+                            </div>
+                            <br>
+                            <small class="fragment" data-fragment-index="2">*model-checking for adherence to our specification without unintended side-effects (abstract, not code-level). 'Progress' proofs would be even nicer, perhaps a future project</small>
                 </section>
 
                 <section data-background="images/background2.jpg" data-transition="convex-in fade-out">
@@ -290,7 +216,6 @@ Component('task'),
                         <li class="fragment"><b>Easier to find bugs in:</b> Code analysis tools find bugs in user-level code much easier. NASA's programming guidelines...</li>
                         <br>
                         <br>
-                        <small class="fragment">Interested in learning how to use eChronos? Tutorial running on Friday at 10:40 in D2.211. There's also a quickstart guide in the github repository.</small>
                     </ul>
 
                     <aside class="notes">
@@ -353,22 +278,6 @@ Component('task'),
                 </section>
 
                 <section data-background="images/background2.jpg">
-                    <h3>OS & Hardware - What else?</h3>
-                    <div class="fragment">
-                        <ul>
-                            <li>Hardware has an ethernet controller</li>
-                            <li>OS runs our code</li>
-                        </ul> <br>
-                    </div>
-                    <div class="fragment">
-                        <br>
-                        But, we need a way to operate the ethernet controller so that we can communicate with a network - a <b>TCP/IP stack</b>. <br>
-                    </div>
-                    <br>
-                    <h3 class="fragment">Answer? lwIP</h3>
-                </section>
-
-                <section data-background="images/background2.jpg">
                     <h3>lwIP</h3>
                     <ul>
                         <li class="fragment"><em>Lightweight IP</em></li>
@@ -387,23 +296,6 @@ Component('task'),
                 </section>
 
                 <section data-background="images/background2.jpg">
-                    <h3>Nice, but how do I use it on my plaform?</h3>
-                    <p class="fragment">Huge amount of existing ports; there is a good chance one already exists<br></p>
-                    <br>
-                    <p class="fragment"><b>Porting lwIP involves:</b></p>
-                    <ul>
-                        <li class="fragment">Implementing the physical hardware interface</li>
-                        <li class="fragment">Implementing any syscalls that lwIP needs (RTOS dependent!)</li>
-                    </ul> <br>
-                    <br>
-                    <p class="fragment">Both are just a set of stub <code>.h</code> and <code>.c</code> files. <br></p>
-
-                    <aside class="notes">
-                        Going to focus on syscalls, as having to implement your own PHY is rare
-                    </aside>
-                </section>
-
-                <section data-background="images/background2.jpg">
                     <h3>Syscalls: Some of what lwIP needs:</h3>
                     <ul>
                         <li class="fragment" data-fragment-index="1"><b>Threads:</b> <code>sys_arch_thread, <a>sys_arch_thread_new</a>, ... </code></li>
@@ -416,17 +308,6 @@ Component('task'),
                     <aside class="notes">
                         Perhaps briefly mention message queue hacking that was required.
                     </aside>
-                </section>
-
-                <section data-background="images/background2.jpg">
-                    <h3>eChronos makes this interesting</h3>
-                    <p class="fragment">In exchange for eChronos' high-assurance, we <b>lose dynamic allocation of OS primitives</b>. This means we can't just pull a new task out of thin air, for example.<br></p>
-                    <br>
-                    <div class="fragment">
-                        However, lwIP requires this! What do we do? <br>
-                        <br>
-                        <em>Answer: Cheat</em>
-                    </div>
                 </section>
 
                 <section data-background="images/background2.jpg">
@@ -467,14 +348,6 @@ Component('task'),
                         </ul>
                     </div>
                     <small class="fragment"><br>Otherwise bad things will happen!</small>
-                    <aside class="notes">
-                        Illustrate that a 'resource manager' in this case is simply an array full of pointers with an accompanying 'dirty' flag.
-                        Only 4 of each resource was required to be stable!
-                    </aside>
-                </section>
-
-                <section data-background="images/background2.jpg">
-                    <h1>Hardware Demos</h1>
                 </section>
 
                 <section data-background="images/background2.jpg">
@@ -485,11 +358,46 @@ Component('task'),
                 </section>
 
                 <section data-background="images/background2.jpg">
+                    <h3>Linux.conf.au</h3>
+                    <h2>[video of hw demos]</h1>
+                </section>
+
+                <section data-background="images/background2.jpg">
+                    <h2>Boring stats</h2>
+                    <div id="wrap">
+                        <div id="left_col">
+                            <h3 class="fragment">eChronos Core</h3>
+                            <ul>
+                                <li class="fragment">2x (major) features</li>
+                                <li class="fragment">2x (large) documentation additions</li>
+                                <li class="fragment">1x bugfix</li>
+                                <li class="fragment"><a>3x (experimental) features</a></li>
+                                <li class="fragment">5x branches reviewed</li>
+                            </ul>
+                            <br>
+                            <br>
+                            <small class="fragment">Review process is extremely tight!</small>
+                        </div>
+                        <div id="right_col">
+                            <h3 class="fragment">Funky Hardware</h3>
+                            <ul>
+                                <li class="fragment">1x IoT geiger counter</li>
+                                <li class="fragment">1x Build-triggered flashy annoyance device</li>
+                                <li class="fragment">2x Hardware regression-testing units</li>
+                            </ul>
+                            <br>
+                            <br>
+                            <small class="fragment">^all above run lwIP & eChronos</small>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/background2.jpg">
                     <h4>Source code: <a>github.com/Schnommus/echronos-lwip</a></h4>
                     <h4>eChronos: <a>github.com/echronos/echronos</a></h4>
-                    <h4>Slides (Live): <a>sebholzapfel.com/static/echronos-lwip-slides</a></h4>
-                    <h4>Slides (Source): <a>github.com/Schnommus/echronos-lwip-slides</a></h4>
-                    <h4>Email: <a>schnommus@gmail.com</a> || <a>sebastian.holzapfel@nicta.com.au</a></h4>
+                    <h4>Slides (Live): <a>sebholzapfel.com/static/echronos-atp-slides</a></h4>
+                    <h4>Slides (Source): <a>github.com/Schnommus/echronos-atp-slides</a></h4>
+                    <h4>Email: <a>sebastian.holzapfel@nicta.com.au</a></h4>
                 </section>
 
             </div>
