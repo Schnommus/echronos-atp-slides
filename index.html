@@ -136,7 +136,6 @@ Component('sched-rr', {'assume_runnable': False}),
 Component('simple-mutex'),
 Component('task'),
                     </code></pre>
-                    <div class="fragment">Normally, you don't need to create your own. <br></div>
                     <div class="fragment">What about the OS documentation? <em>It's generated, too!</em></div>
                 </section>
 
@@ -311,43 +310,28 @@ Component('task'),
                 </section>
 
                 <section data-background="images/background2.jpg">
-                    <h3>1. Remove dynamic allocation</h3>
                     <p class="fragment">
-                    A task may exist for the program lifecycle without a chance of being deleted or reallocated. Similar scenario with other primitives. <br>
+                    <b>Remove dynamic allocation:</b> A task may exist for the program lifecycle without a chance of being deleted or reallocated.<br>
                     </p>
                     <br>
                     <ul>
                         <li class="fragment">Means it's possible for these elements to be static. So,</li>
-                        <li class="fragment">Remove the dynamic allocation, add the element to our <code>.prx</code> file</li>
+                        <li class="fragment">Remove the dynamic allocation, add the element to our <code>.prx</code></li>
                     </ul> <br>
                     <br>
-                    <small class="fragment">E.g. master TCP thread, ethernet signal response thread, TCP usage lock</small>
-                    <br>
-                    <p class="fragment">However, not every primitive is used like this!</p>
 
+                    <p class="fragment"><b>Feign a memory manager</b>: Allocate <em>dummy</em> primitives statically (in <code>.prx</code>)</p>
+                    <br>
+                    <ul>
+                        <li class="fragment">Write a <em>manager</em> for dealing with usage of these resources</li>
+                        <li class="fragment">Put a hard upper bound on the number of these primitives.</li>
+                        <li class="fragment">Do traffic benchmarks, ensure we never hit the upper bound.</li>
+                    </ul> <br>
+
+                    <small class="fragment"><br>Otherwise bad things will happen!</small>
                     <aside class="notes">
                         Surprisingly, it was possible to remove every dynamically allocated thread from lwIP, all threads are now static.
                     </aside>
-                </section>
-
-                <section data-background="images/background2.jpg">
-                    <h3>2. Feign a memory manager</h3>
-                    <p class="fragment">With anything else, the solution is to<br></p>
-                    <br>
-                    <ul>
-                        <li class="fragment">Allocate <em>dummy</em> primitives statically (in <code>.prx</code>)</li>
-                        <li class="fragment">Write a <em>manager</em> for dealing with usage of these static resources</li>
-                        <li class="fragment">Put a hard upper bound on the number of these primitives.</li>
-                    </ul> <br>
-                    <br>
-                    <div class="fragment">
-                        Then...<br>
-                        <br>
-                        <ul>
-                            <li>Do traffic benchmarks, ensure we never hit the upper bound.</li>
-                        </ul>
-                    </div>
-                    <small class="fragment"><br>Otherwise bad things will happen!</small>
                 </section>
 
                 <section data-background="images/background2.jpg">
