@@ -1,6 +1,6 @@
 - title slide
 - echronos + lwip overview
-- other things (boring stats)
+- eChronos core changes
 - echronos
 - echronos customization & justification
 - interrupt priority resolution trap
