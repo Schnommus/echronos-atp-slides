@@ -1,0 +1,14 @@
+- title slide
+- echronos + lwip overview
+- other things (boring stats)
+- echronos
+- echronos customization & justification
+- interrupt priority resolution trap
+- lwip
+- lwip integration procedure
+- hardware pictures & demos
+- Linux.conf.au video
+- Lightning features
+
+Talk Title: "eChronos Adventures: lwIP, IoT, and Radioactivity"
+Abstract: "Tales of porting eChronos to a new platform, and then porting a TCP/IP stack to the RTOS. A rapid rundown of some of my changes to the core eChronos codebase, experimental features I've been working on, videos of hardware demos, traps encountered."
